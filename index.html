@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synergia '26 05/03/2026 | Event Management</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <h1>Synergia'26</h1>
+      <p class="subtitle">SREE SARASWATHI THYAGARAGA COLLEGE,POLLACHI</p>
+      <p class="event-date">March 5, 2026</p>
+      <div class="decorative-line"></div>
+    </div>
+  </header>
+
+  <nav class="sticky-nav">
+    <div class="container nav-container">
+      <a href="#registration" class="nav-link">Registration</a>
+      <a href="#team" class="nav-link">Teams</a>
+      <a href="#scoreboard" class="nav-link">Scoreboard</a>
+      <a href="#payment" class="nav-link">Payment</a>
+    </div>
+  </nav>
+
+  <main>
+    <section id="registration" class="section">
+      <div class="section-line-top"></div>
+      <div class="container">
+        <div class="section-header">
+          <h2>Online Registration</h2>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <form id="registrationForm">
+              <label for="regName">Full Name</label>
+              <input id="regName" type="text" required placeholder="Ananya Sharma">
+
+              <label for="regEmail">Email</label>
+              <input id="regEmail" type="email" required placeholder="name@mail.com">
+
+              <label for="regCollege">College</label>
+              <input id="regCollege" type="text" required placeholder="ABC Institute of Technology">
+
+              <label for="regEvent">Event</label>
+              <select id="regEvent" required>
+                <option value="">Select Event</option>
+                <option value="Dance Battle">Dance Battle</option>
+                <option value="Music Jam">Music Jam</option>
+                <option value="Hack Sprint">Hack Sprint</option>
+                <option value="Sports Relay">Sports Relay</option>
+              </select>
+
+              <button class="btn-primary" type="submit">Register Participant</button>
+            </form>
+            <p id="regMessage" class="status"></p>
+          </div>
+
+          <div class="card">
+            <span class="pill">Registered Participants</span>
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Event</th>
+                  <th>ID</th>
+                </tr>
+              </thead>
+              <tbody id="regTableBody"></tbody>
+            </table>
+            <p class="small">Data is saved in browser using localStorage for demo continuity.</p>
+          </div>
+        </div>
+      </div>
+      <div class="section-line-bottom"></div>
+    </section>
+
+    <section id="team" class="section">
+      <div class="section-line-top"></div>
+      <div class="container">
+        <div class="section-header">
+          <h2>Team Formation</h2>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <form id="teamForm">
+              <label for="teamName">Team Name</label>
+              <input id="teamName" type="text" required placeholder="CodeBlazers">
+
+              <label for="teamEvent">Event</label>
+              <select id="teamEvent" required>
+                <option value="">Select Event</option>
+                <option value="Hack Sprint">Hack Sprint</option>
+                <option value="Dance Battle">Dance Battle</option>
+                <option value="Music Jam">Music Jam</option>
+              </select>
+
+              <label for="memberName">Member Name</label>
+              <input id="memberName" type="text" required placeholder="Ravi Kumar">
+
+              <button class="btn-primary" type="submit">Create Team / Add Member</button>
+            </form>
+            <p id="teamMessage" class="status"></p>
+          </div>
+
+          <div class="card">
+            <span class="pill">Current Teams</span>
+            <table>
+              <thead>
+                <tr>
+                  <th>Team</th>
+                  <th>Event</th>
+                  <th>Members</th>
+                </tr>
+              </thead>
+              <tbody id="teamTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="section-line-bottom"></div>
+    </section>
+
+    <section id="scoreboard" class="section">
+      <div class="section-line-top"></div>
+      <div class="container">
+        <div class="section-header">
+          <h2>Live Scoreboard</h2>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <span class="pill">Judge Panel (Demo Controls)</span>
+            <label for="scoreTeam">Team</label>
+            <select id="scoreTeam"></select>
+
+            <div class="row">
+              <button class="btn-secondary" type="button" data-points="1">+1 Point</button>
+              <button class="btn-secondary" type="button" data-points="5">+5 Points</button>
+              <button class="btn-secondary" type="button" data-points="-1">-1 Point</button>
+            </div>
+
+            <p class="meta" id="lastUpdated">Last updated: --</p>
+            <p class="meta" id="leaderBoard">Current leader: --</p>
+          </div>
+
+          <div class="card">
+            <span class="pill">Rankings (Auto Sorted)</span>
+            <table>
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Team</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody id="scoreTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="section-line-bottom"></div>
+    </section>
+
+    <section id="payment" class="section">
+      <div class="section-line-top"></div>
+      <div class="container">
+        <div class="section-header">
+          <h2>Payment Integration</h2>
+        </div>
+        <div class="grid">
+          <div class="card">
+            <span class="pill">Concept Flow</span>
+            <ol class="payment-flow">
+              <li>Create order from backend with amount and event fee.</li>
+              <li>Open gateway checkout (Razorpay/Stripe) for user payment.</li>
+              <li>Receive success callback and verify signature on server.</li>
+              <li>Mark payment completed and generate receipt ID.</li>
+            </ol>
+
+            <form id="paymentForm">
+              <label for="payParticipant">Participant</label>
+              <select id="payParticipant" required></select>
+
+              <label for="payAmount">Amount (INR)</label>
+              <input id="payAmount" type="number" min="1" value="499" required>
+
+              <label for="payMethod">Gateway (Concept)</label>
+              <select id="payMethod" required>
+                <option value="Razorpay">Razorpay</option>
+                <option value="Stripe">Stripe</option>
+                <option value="PayU">PayU</option>
+              </select>
+
+              <button class="btn-primary" type="submit">Simulate Payment</button>
+            </form>
+            <p id="paymentMessage" class="status"></p>
+          </div>
+
+          <div class="card">
+            <span class="pill">Transactions</span>
+            <table>
+              <thead>
+                <tr>
+                  <th>Txn ID</th>
+                  <th>Participant</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="paymentTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="section-line-bottom"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-graphics"></div>
+    <div class="container">
+      <div class="footer-tech-stack">
+        <div class="tech-item">
+          <span class="tech-icon-large">⚛️</span>
+          <span>React</span>
+        </div>
+        <div class="tech-item">
+          <span class="tech-icon-large">🟢</span>
+          <span>Node.js</span>
+        </div>
+        <div class="tech-item">
+          <span class="tech-icon-large">⚡</span>
+          <span>JavaScript</span>
+        </div>
+      </div>
+      <div class="footer-line"></div>
+      <p>&copy; 2026 Synergia'26 - Sree Saraswathi Thyagaraga College</p>
+      <p class="small">Event Management System</p>
+      <p class="small">Designed with passion for innovation</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
